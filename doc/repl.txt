@@ -1,0 +1,20 @@
+*repl.txt*    Plugin that can execute text as shell commands
+
+==============================================================================
+Author:  Matthew Franglen <matthew.franglen+shellvim@gmail.com> *shell-author*
+License: Same terms as Vim itself (see |license|)
+
+==============================================================================
+INTRODUCTION
+
+This allows text to be executed as shell commands and any output written to
+the vim buffer.
+
+:Repl                                                                  *:Repl*
+
+    Enable the REPL for the current buffer.
+
+    Pressing Enter on any line in the current buffer will execute that line in
+    the shell. The output will be pasted at the bottom of the buffer, followed
+    by the original command that was executed. This allows you to easily edit
+    and re-run the command.

@@ -8,16 +8,22 @@ endif
 let g:loaded_repl = 1
 
 function! g:Repl()
-    nnoremap <buffer> <CR> :call <SID>InvokeRepl()<CR>
+    command! -buffer -range Invoke call s:InvokeWithRange(<line1>, <line2>)
+    nnoremap <buffer> <CR> :Invoke<CR>
+    vnoremap <buffer> <CR> :'<,'>Invoke<CR>
     call s:HandleShellEscapes()
 endfunction
 command! Repl call g:Repl()
 
-function s:InvokeRepl()
-    let command = getline('.')
+function s:InvokeWithRange(start, end)
+    call s:InvokeRepl(getline(a:start, a:end))
+endfunction
+
+function s:InvokeRepl(commandList)
+    let command = join(a:commandList, " ")
     call s:MoveToBottomOfFile()
     call s:ExecuteCommandAndAppendOutput(command)
-    call s:AppendCommand(command)
+    call s:AppendCommand(a:commandList)
 endfunction
 
 function s:MoveToBottomOfFile()
@@ -30,8 +36,10 @@ function s:ExecuteCommandAndAppendOutput(command)
     normal o
 endfunction
 
-function s:AppendCommand(command)
-    put =a:command
+function s:AppendCommand(commandList)
+    for line in a:commandList
+        put =line
+    endfor
     normal jdd
 endfunction
 

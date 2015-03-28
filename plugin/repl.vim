@@ -1,6 +1,6 @@
 " repl.vim - Execute text as shell commands
 " Maintainer: Matthew Franglen
-" Version:    0.0.2
+" Version:    0.0.3
 
 if exists('g:loaded_repl') || &compatible
   finish

@@ -31,6 +31,7 @@ function s:MoveToBottomOfFile()
 endfunction
 
 function s:ExecuteCommandAndAppendOutput(command)
+    echo "Executing " . a:command
     normal o
     execute ": -r ! " . a:command
     normal o

@@ -12,4 +12,7 @@ execute that line in the shell. The output will be pasted at the bottom of the
 buffer, followed by the original command that was executed. This allows you to
 easily edit and re-run the command.
 
+If you make a visual selection then pressing enter will execute all selected
+lines.
+
 This only affects the current buffer at the time you ran _:Repl_.

@@ -1,6 +1,6 @@
 " repl.vim - Execute text as shell commands
 " Maintainer: Matthew Franglen
-" Version:    0.0.3
+" Version:    0.0.4
 
 if exists('g:loaded_repl') || &compatible
   finish
@@ -31,6 +31,7 @@ function s:MoveToBottomOfFile()
 endfunction
 
 function s:ExecuteCommandAndAppendOutput(command)
+    echo "Executing " . a:command
     normal o
     execute ": -r ! " . a:command
     normal o

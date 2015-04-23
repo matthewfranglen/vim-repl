@@ -20,7 +20,7 @@ function s:InvokeWithRange(start, end)
 endfunction
 
 function s:InvokeRepl(commandList)
-    let command = join(a:commandList, " ")
+    let command = join(a:commandList, ' ')
     call s:MoveToBottomOfFile()
     call s:ExecuteCommandAndAppendOutput(command)
     call s:AppendCommand(a:commandList)
@@ -31,9 +31,9 @@ function s:MoveToBottomOfFile()
 endfunction
 
 function s:ExecuteCommandAndAppendOutput(command)
-    echo "Executing " . a:command
+    echo 'Executing ' . a:command
     silent! normal o
-    silent! execute ": -r ! " . a:command
+    silent! execute ': -r ! ' . a:command
     silent! normal o
 endfunction
 

@@ -21,3 +21,14 @@ the vim buffer.
 
     If you make a visual selection then pressing enter will execute all
     selected lines.
+
+    Pressing Control-C on any line or visual selection will add that to the
+    context. The context is executed before any command. You can use the
+    context to do things like moving to a specific folder or exporting
+    variables.
+
+    The context is specific to the buffer.
+
+:ClearContext                                                  *:ClearContext*
+
+    This will clear the context for the current buffer.

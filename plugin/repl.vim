@@ -15,8 +15,8 @@ function! g:Repl()
     vnoremap <buffer> <CR> :'<,'>Invoke<CR>
 
     command! -buffer -range Context call s:ContextWithRange(<line1>, <line2>)
-    nnoremap <buffer> <S-CR> :Context<CR>
-    vnoremap <buffer> <S-CR> :'<,'>Context<CR>
+    nnoremap <buffer> <C-C> :Context<CR>
+    vnoremap <buffer> <C-C> :'<,'>Context<CR>
 
     command! -buffer ClearContext call s:ClearContext()
 
@@ -31,7 +31,7 @@ endfunction
 function s:InvokeRepl(commandList)
     let command = join(a:commandList, ' ')
     call s:MoveToBottomOfFile()
-    call s:ExecuteCommandAndAppendOutput(command)
+    call s:ExecuteCommandAndAppendOutput(b:repl_context, command)
     call s:AppendCommand(a:commandList)
 endfunction
 
@@ -41,10 +41,12 @@ endfunction
 
 function s:ContextRepl(commandList)
     let b:repl_context = b:repl_context . ' ; ' . join(a:commandList, ' ')
+    echo 'Context is now {' . b:repl_context . '}'
 endfunction
 
 function s:ClearContext()
     let b:repl_context = ''
+    echo 'Context is now {' . b:repl_context . '}'
 endfunction
 
 function s:MoveToBottomOfFile()

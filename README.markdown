@@ -15,4 +15,10 @@ easily edit and re-run the command.
 If you make a visual selection then pressing enter will execute all selected
 lines.
 
+The Repl has a Context which is a set of commands to run before executing
+anything. You can add lines and visual selections to it by pressing Control-C.
+The Context can be used to move to a specific folder or export required
+settings. You can clear the Context at any time using the _:ClearContext_
+command.
+
 This only affects the current buffer at the time you ran _:Repl_.

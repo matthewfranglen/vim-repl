@@ -1,6 +1,6 @@
 " repl.vim - Execute text as shell commands
 " Maintainer: Matthew Franglen
-" Version:    0.0.6
+" Version:    0.0.7
 
 if exists('g:loaded_repl') || &compatible
   finish
@@ -9,6 +9,10 @@ let g:loaded_repl = 1
 
 function! g:Repl()
     let b:repl_context = ''
+
+    let &l:buftype = 'nofile'
+    let &l:bufhidden = 'hide'
+    let &l:swapfile = 0
 
     command! -buffer -range Invoke call s:InvokeWithRange(<line1>, <line2>)
     nnoremap <buffer> <CR> :Invoke<CR>
